@@ -13,7 +13,7 @@
 
                                     <a class="list-group-item" id="pf_active" href="#pf" data-toggle="tab"><span><br><i
                                                     class="fa fa-user"></i><br>Profile</span></a>
-                                    <a class="list-group-item" href="#tasks" data-toggle="tab"><span><br><i
+                                    <a class="list-group-item" href="#tasks" id="task_active" data-toggle="tab"><span><br><i
                                                     class="fa fa-tasks"></i><br>Tasks</span></a>
                                     <a class="list-group-item" href="#sharetasks" data-toggle="tab"><span><br><i
                                                     class="fa fa-share-square"></i><br>Shared Tasks</span></a>
@@ -649,12 +649,12 @@
                                                                                 <div class="shadow-sm p-3 mb-3 bg-white rounded panel-body pt-5 rounded">
 
                                                                                     <div class="row hod-cbp-subtask">
-
+                                                                                        
 
                                                                                         @if(empty($cbplist->cbp_sub_lists))
                                                                                         @else
                                                                                             @foreach($cbplist->cbp_sub_lists as $sublist)
-
+                                                                                                    
 
                                                                                                 <div class="col-md-6">
                                                                                                     <div class="panel-group"
@@ -763,7 +763,7 @@
                                                                                            class="form-control" id="per"
                                                                                            min="0" max="100"></input>
                                                                                 </div>
-                                                                                <input type="hidden" name="receiver_id" value="{{$chairman_id->emp_id}}" id="receiver_id">
+                                                                                <input type="hidden" name="user_id" value="{{$cbplist->user_id}}" id="user_id">s
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button"
@@ -772,7 +772,8 @@
                                                                                 </button>
                                                                                 <button type="button"
                                                                                         class="btn btn-primary"
-                                                                                        id="hod_report_submit">Report
+                                                                                        id="{{$cbplist->cbp_id}}"
+                                                                                        onClick="hod_report(this.id)">Report
                                                                                 </button>
                                                                             </div>
                                                                         </div>
@@ -1019,7 +1020,18 @@
                 // element.add("Active");
                 console.log('afeafeae');
 
-            } else {
+            } 
+            else if(localStorage.getItem('task') == 'Active'){
+                $('#task_active').addClass('active');
+                $('#tasks').addClass('in');
+
+                $('#tasks').addClass('active');
+                $('#tasks').addClass('show');
+                // var element = document.getElementById("cbp_active");
+                // element.add("Active");
+                console.log('task tab');
+            }
+            else {
                 console.log('test');
                 $('#pf_active').addClass('active');
                 $('#pf').addClass('in');
@@ -1147,14 +1159,17 @@
                     // alert(config_id+" "+config_title); for test
                     $('#hod_report_modal').modal('show');
                 });
-
+                function hod_report(obj){
+                    var id=obj.id;
+                    alert(id);
+                }
 
                 $('#hod_report_submit').click(function () {
                     // console.log(main_cbp_id);
                     var report_text = $('#report_text').val();
-                    var receiver_id=$('#receiver_id').val();
+                    var user_id=$('#user_id').val();
                     var per = $('#per').val();
-                    // alert(receiver_id);
+                    //  alert(user_id);
                     // console.log(report_text);
                     $.ajax({
                         headers: {
@@ -1162,6 +1177,7 @@
                         },
                         method: "POST",
                         url: "/reportHot",
+
                         data: {config_id, report_text, per,receiver_id,main_cbp_id}
                     }).done(function (data) {
                         console.log("S blade: [task/create] component :[employee dropdown] from:app.js Data => Employee count" + data.length);
