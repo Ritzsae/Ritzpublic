@@ -531,7 +531,7 @@
                                                                  aria-multiselectable="true">
                                                                 <div class="panel panel-default panel-profile">
                                                                     @foreach($employee->cbplistdesc as $cbplist)
-                                                                    
+
                                                                         <div>
 
 
@@ -1138,12 +1138,9 @@
                     var per = $('#per').val(0);
 
 
-
                     config_id = $(this).data('config_id');
 
                     main_cbp_id = $(this).data('main_cbp_id');
-
-
                     var config_title = $(this).data('config_title');
                     cbp_list_id=$(this).data('')
                     $('#hot_report_title').append(config_title);
