@@ -6,6 +6,7 @@ use App\Employee;
 use App\Task;
 use App\Remark;
 use App\Project;
+use App\Histories;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,10 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      *
      */
+
+
     public $historyhelper;
+
 
     public function __construct()
     {
@@ -42,11 +46,14 @@ class TaskController extends Controller
         return view('task.index', compact(['alltasks', 'assigntasks', 'starttasks', 'reporttasks', 'completetasks', 'rejecttasks']));
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function create()
     {
         $this->authorize('create', Task::class);
@@ -62,6 +69,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+
 
         $filenames = "";
 
@@ -105,7 +113,10 @@ class TaskController extends Controller
 
 
              //            for notification
-            $this->historyhelper->setnoti(1, 1, 'dddfa');
+        //  $created = Histories::create(['sender_id' =>Auth::user()->id,'project_id'=>'','cbp_id'=>'','read_this'=>0,'receiver_id' => $request->assignee_person, 'description' =>$request->description, 'link_name'=>'current_link','created_at' => $request->start_time , 'updated_at' =>  $request->end_time]); 
+  $this->historyhelper->setnoti(Auth::user()->id,$request->assignee_person,'','',$request->description,'task',false);
+
+
             //            for notification
 
 

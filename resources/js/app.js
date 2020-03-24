@@ -35,6 +35,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 Vue.component('Piechart', require('./components/Piechart.vue').default);
 Vue.component('progressbar', require('./components/progressbar.vue').default);
+Vue.component('Realtimenoti', require('./components/realtimenoti.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -156,7 +158,7 @@ Dropzone.options.taskform = {
         });
 
         this.on("success",function(data){
-          
+          console.log(data);
           if(data){
             Swal.fire({
                 title: 'Great Job',
@@ -583,7 +585,7 @@ $.fn.addNewImage=function(myDropZone) {
 
 // Use JSFiddle logo as a sample image to avoid complicating
 // this example with cross-domain issues.
-    xhr.open( "GET", "http://127.0.0.1:8000/images/sae-logo.png", true );
+    xhr.open( "GET", "http://localhost:8000/images/sae-logo.png", true );
 
 // Ask for the result as an ArrayBuffer.
     xhr.responseType = "arraybuffer";
@@ -795,14 +797,14 @@ $(function () {
         }
 
 
-    //this function is for pagination with tab-panes in profile.blade.php
-    var activeTab  = window.location.hash;
-    if (activeTab==""){
-        activeTab="#infos";
-    }
-    $(".tab-pane").removeClass("active in");
-    $(activeTab).addClass("active in");
-    $('a[href="'+ activeTab +'"]').tab('show');
+    // this function is for pagination with tab-panes in profile.blade.php
+    // var activeTab  = window.location.hash;
+    // if (activeTab==""){
+    //     activeTab="#infos";
+    // }
+    // $(".tab-pane").removeClass("active in");
+    // $(activeTab).addClass("active in");
+    // $('a[href="'+ activeTab +'"]').tab('show');
 });
 
 

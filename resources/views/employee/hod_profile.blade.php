@@ -13,7 +13,7 @@
 
                                     <a class="list-group-item" id="pf_active" href="#pf" data-toggle="tab"><span><br><i
                                                     class="fa fa-user"></i><br>Profile</span></a>
-                                    <a class="list-group-item" href="#tasks" data-toggle="tab"><span><br><i
+                                    <a class="list-group-item" href="#tasks" id="task_active" data-toggle="tab"><span><br><i
                                                     class="fa fa-tasks"></i><br>Tasks</span></a>
                                     <a class="list-group-item" href="#sharetasks" data-toggle="tab"><span><br><i
                                                     class="fa fa-share-square"></i><br>Shared Tasks</span></a>
@@ -531,7 +531,7 @@
                                                                  aria-multiselectable="true">
                                                                 <div class="panel panel-default panel-profile">
                                                                     @foreach($employee->cbplistdesc as $cbplist)
-                                                                    
+
                                                                         <div>
 
 
@@ -622,6 +622,7 @@
                                                                                                     <button type="button"
                                                                                                             class="btn btn-success btn_hot_report"
                                                                                                             data-config_id="{{$cbplist->id}}"
+                                                                                                            data-main_cbp_id="{{$cbplist->cbp_id}}"
                                                                                                             data-config_title="{{$cbplist->CBPlist->cbp_name}}">
                                                                                                         Report
                                                                                                     </button>
@@ -648,12 +649,12 @@
                                                                                 <div class="shadow-sm p-3 mb-3 bg-white rounded panel-body pt-5 rounded">
 
                                                                                     <div class="row hod-cbp-subtask">
-
+                                                                                        
 
                                                                                         @if(empty($cbplist->cbp_sub_lists))
                                                                                         @else
                                                                                             @foreach($cbplist->cbp_sub_lists as $sublist)
-
+                                                                                                    
 
                                                                                                 <div class="col-md-6">
                                                                                                     <div class="panel-group"
@@ -721,8 +722,11 @@
                                                                     @endforeach
                                                                 </div>
 
+
+
+
                                                                 <!-- bootstrap modal section -->
-                                                               
+
                                                                 <div class="modal fade" id="hod_report_modal"
                                                                      tabindex="-1" role="dialog"
                                                                      aria-labelledby="exampleModalCenterTitle"
@@ -759,7 +763,7 @@
                                                                                            class="form-control" id="per"
                                                                                            min="0" max="100"></input>
                                                                                 </div>
-                                                                                <input type="hidden" name="receiver_id" value="{{$chairman_id->emp_id}}" id="receiver_id">
+                                                                                <input type="hidden" name="user_id" value="{{$cbplist->user_id}}" id="user_id">s
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button"
@@ -768,7 +772,8 @@
                                                                                 </button>
                                                                                 <button type="button"
                                                                                         class="btn btn-primary"
-                                                                                        id="hod_report_submit">Report
+                                                                                        id="{{$cbplist->cbp_id}}"
+                                                                                        onClick="hod_report(this.id)">Report
                                                                                 </button>
                                                                             </div>
                                                                         </div>
@@ -776,6 +781,24 @@
                                                                 </div>
 
                                                                 <!-- bootstrap modal section -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                                 <div class="modal fade in hide" id="cbb_hot_modal"
                                                                      tabindex="-1" role="dialog"
                                                                      aria-labelledby="subconfigTitle"
@@ -980,9 +1003,12 @@
             }
         }
 
+
         window.onload = function () {
 
+
             //for profile page
+
 
             if (localStorage.getItem('cmp') == 'Active') {
                 $('#cbp_active').addClass('active');
@@ -994,7 +1020,18 @@
                 // element.add("Active");
                 console.log('afeafeae');
 
-            } else {
+            }
+            else if(localStorage.getItem('task') == 'Active'){
+                $('#task_active').addClass('active');
+                $('#tasks').addClass('in');
+
+                $('#tasks').addClass('active');
+                $('#tasks').addClass('show');
+                // var element = document.getElementById("cbp_active");
+                // element.add("Active");
+                console.log('task tab');
+            }
+            else {
                 console.log('test');
                 $('#pf_active').addClass('active');
                 $('#pf').addClass('in');
@@ -1030,7 +1067,6 @@
             localStorage.setItem("require_error", "");
 
             $(function () {
-
                 $('#project_region').select2({
                     placeholder: 'Choose HOT',
                     dropdownParent: $('.modal.fade.show')
@@ -1106,21 +1142,34 @@
 
 
                 var config_id = 0;
+                var main_cbp_id = 0;
+
                 $('.btn_hot_report').click(function () {
                     $('#hot_report_title').empty();
+                    $('#report_text').val('');
+                    var per = $('#per').val(0);
+
+
                     config_id = $(this).data('config_id');
+
+                    main_cbp_id = $(this).data('main_cbp_id');
                     var config_title = $(this).data('config_title');
+                    cbp_list_id=$(this).data('')
                     $('#hot_report_title').append(config_title);
                     // alert(config_id+" "+config_title); for test
                     $('#hod_report_modal').modal('show');
                 });
-
+                function hod_report(obj){
+                    var id=obj.id;
+                    alert(id);
+                }
 
                 $('#hod_report_submit').click(function () {
+                    // console.log(main_cbp_id);
                     var report_text = $('#report_text').val();
-                    var receiver_id=$('#receiver_id').val();
+                    var user_id=$('#user_id').val();
                     var per = $('#per').val();
-                    // alert(receiver_id);
+                    //  alert(user_id);
                     // console.log(report_text);
                     $.ajax({
                         headers: {
@@ -1128,7 +1177,8 @@
                         },
                         method: "POST",
                         url: "/reportHot",
-                        data: {config_id, report_text, per,receiver_id}
+
+                        data: {config_id, report_text, per,receiver_id,main_cbp_id}
                     }).done(function (data) {
                         console.log("S blade: [task/create] component :[employee dropdown] from:app.js Data => Employee count" + data.length);
                         if (data.success) {
@@ -1139,8 +1189,8 @@
                             $('#hod_report_modal').modal('hide');
 
 
-                           
-                            
+
+
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Successfully Reported',
