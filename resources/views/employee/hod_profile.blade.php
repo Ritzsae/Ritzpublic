@@ -1020,7 +1020,7 @@
                 // element.add("Active");
                 console.log('afeafeae');
 
-            } 
+            }
             else if(localStorage.getItem('task') == 'Active'){
                 $('#task_active').addClass('active');
                 $('#tasks').addClass('in');

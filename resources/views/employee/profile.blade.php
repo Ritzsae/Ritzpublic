@@ -9,9 +9,10 @@
                         <div class="row">
                             <div class="col-2">
                                 <div class="list-group profile-list">
+
                                     <a class="list-group-item" id="pf_active" href="#pf" data-toggle="tab"><span><br><i
                                                     class="fa fa-user"></i><br>Profile</span></a>
-                                    <a class="list-group-item" href="#tasks" data-toggle="tab"><span><br><i
+                                    <a class="list-group-item" href="#tasks" id="task_active" data-toggle="tab"><span><br><i
                                                     class="fa fa-tasks"></i><br>Tasks</span></a>
                                     <a class="list-group-item" href="#sharetasks" data-toggle="tab"><span><br><i
                                                     class="fa fa-share-square"></i><br>Shared Tasks</span></a>
@@ -769,8 +770,8 @@
         }
 
         window.onload=function(){
-            if (localStorage.getItem('cmp') == 'Active') {
 
+            if (localStorage.getItem('cmp') == 'Active') {
                 $('#cbp_active').addClass('active');
                 $('#cbp').addClass('in');
 
@@ -780,7 +781,18 @@
                 // element.add("Active");
                 console.log('afeafeae');
 
-            } else {
+            }
+            else if(localStorage.getItem('task') == 'Active'){
+                $('#task_active').addClass('active');
+                $('#tasks').addClass('in');
+
+                $('#tasks').addClass('active');
+                $('#tasks').addClass('show');
+                // var element = document.getElementById("cbp_active");
+                // element.add("Active");
+                console.log('task tab');
+            }
+            else {
                 console.log('test');
                 $('#pf_active').addClass('active');
                 $('#pf').addClass('in');
@@ -792,12 +804,28 @@
                 console.log('afeafeae');
             }
 
+            console.log('test');
+            $('#a_active').addClass('active');
+            $('#a').addClass('in');
+
+            $('#a').addClass('active');
+            $('#a').addClass('show');
+            // var element = document.getElementById("cbp_active");
+            // element.add("Active");
+            console.log('afeafeae');
+
+            // clear locastorage
+            setInterval(function () {
+                return localStorage.clear('cmp')
+            }, 3000);
+            // clear locastorage
+
+
 
             // clear locastorage
             setInterval(function () {
               localStorage.clear('cmp');
-              localStorage.clear('cmp');
-              localStorage.clear('cmp');
+
             }, 3000);
             // clear locastorage
 
