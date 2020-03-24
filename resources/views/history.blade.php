@@ -11,6 +11,7 @@
                 <h4><i class="fas fa-history"></i>&emsp;History Log</h4>
                 </div>
                 <div class="srch_bar">
+                
                
                 <div class="stylish-input-group">
                 <!--  -->
