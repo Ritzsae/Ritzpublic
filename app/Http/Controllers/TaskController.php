@@ -23,6 +23,8 @@ class TaskController extends Controller
      */
 
 
+
+
     public $historyhelper;
 
 
@@ -58,7 +60,7 @@ class TaskController extends Controller
     {
         $this->authorize('create', Task::class);
         $task = new Task();
-        return view("task.create", compact('task'));
+        return view("task.create", compact('task'));    
     }
 
     /**

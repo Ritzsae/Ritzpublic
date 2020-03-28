@@ -50,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CbpSubtaskController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3608">
-              <caret line="175" column="22" selection-start-line="175" selection-start-column="22" selection-end-line="175" selection-end-column="22" />
+            <state relative-caret-position="624">
+              <caret line="157" column="24" selection-start-line="157" selection-start-column="24" selection-end-line="157" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -59,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaskController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="270">
+              <caret line="165" column="7" selection-start-line="165" selection-start-column="7" selection-end-line="165" selection-end-column="7" />
               <folding>
                 <element signature="e#40#57#0#PHP" expanded="true" />
               </folding>
@@ -71,8 +71,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/employee/hod_profile.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22594">
-              <caret line="1027" column="47" selection-start-line="1027" selection-start-column="47" selection-end-line="1027" selection-end-column="47" />
+            <state relative-caret-position="184">
+              <caret line="884" lean-forward="true" selection-start-line="884" selection-end-line="884" />
+              <folding>
+                <element signature="e#40324#52211#0#HTML" />
+                <element signature="e#44425#44443#0#HTML" expanded="true" />
+                <element signature="e#45679#45729#0#HTML" expanded="true" />
+                <element signature="e#48352#48358#0#HTML" expanded="true" />
+                <element signature="e#52290#60277#0#HTML" />
+                <element signature="e#61406#66726#0#HTML" />
+                <element signature="e#63090#63097#1#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/Realtimenoti.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="65" column="25" lean-forward="true" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -95,7 +113,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/app.js">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -103,8 +121,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="807" column="3" lean-forward="true" selection-end-line="820" />
+            <state relative-caret-position="17094">
+              <caret line="807" column="3" selection-end-line="820" />
             </state>
           </provider>
         </entry>
@@ -121,8 +139,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cmp_a</find>
-      <find>onload</find>
       <find>cbp_active</find>
       <find>tt</find>
       <find>#cbp</find>
@@ -151,6 +167,8 @@
       <find>pf</find>
       <find>active</find>
       <find>infos</find>
+      <find>cbp_list</find>
+      <find>$cbplist</find>
     </findStrings>
     <replaceStrings>
       <replace>Poppins</replace>
@@ -212,12 +230,12 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProjectConfigController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/Realtimenoti.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CbpSubtaskController.php" />
-        <option value="$PROJECT_DIR$/resources/views/employee/hod_profile.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/employee/profile.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" />
+        <option value="$PROJECT_DIR$/resources/views/employee/hod_profile.blade.php" />
       </list>
     </option>
   </component>
@@ -335,25 +353,20 @@
             <path>
               <item name="ui2_29" type="b2602c69:ProjectViewProjectNode" />
               <item name="ui2_29" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ui2_29" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ui2_29" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ui2_29" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ui2_29" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ui2_29" type="b2602c69:ProjectViewProjectNode" />
               <item name="ui2_29" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ui2_29" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ui2_29" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ui2_29" type="b2602c69:ProjectViewProjectNode" />
@@ -375,7 +388,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -496,12 +509,18 @@
       <workItem from="1584760461776" duration="11603000" />
       <workItem from="1585023289660" duration="589000" />
       <workItem from="1585028356279" duration="182000" />
-      <workItem from="1585035687041" duration="478000" />
+      <workItem from="1585035687041" duration="1735000" />
+      <workItem from="1585367301385" duration="18000" />
+      <workItem from="1585367350963" duration="103000" />
+      <workItem from="1585367486381" duration="67000" />
+      <workItem from="1585368018262" duration="48000" />
+      <workItem from="1585368108224" duration="80000" />
+      <workItem from="1585368745642" duration="3406000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="668251000" />
+    <option name="totallyTimeSpent" value="673230000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -516,7 +535,7 @@
     <frame x="-3" y="-3" width="1542" height="870" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.88592595" weight="0.16912752" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.88592595" visible="true" weight="0.17785235" />
       <window_info id="Structure" order="1" sideWeight="0.114074074" side_tool="true" weight="0.16912752" />
       <window_info id="npm" order="2" sideWeight="0.10217391" side_tool="true" weight="0.020134227" />
       <window_info id="Favorites" order="3" sideWeight="0.45411393" side_tool="true" weight="0.1738255" />
@@ -531,7 +550,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.08389262" side_tool="true" weight="0.6447721" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49932885" weight="0.15281501" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.91610736" visible="true" weight="0.04021448" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.91610736" visible="true" weight="0.05764075" />
       <window_info anchor="bottom" id="Thumbnails" order="12" weight="0.32907802" />
       <window_info anchor="bottom" id="TypeScript" order="13" weight="0.5522788" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -617,12 +636,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/employee/hod_profile.blade.php</url>
-          <line>1061</line>
+          <line>1051</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/employee/hod_profile.blade.php</url>
-          <line>1082</line>
+          <line>1072</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -917,13 +936,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Realtimenoti.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="87" selection-start-line="18" selection-start-column="87" selection-end-line="18" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2134">
@@ -931,30 +943,6 @@
           <folding>
             <element signature="e#7#389#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CbpSubtaskController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3608">
-          <caret line="175" column="22" selection-start-line="175" selection-start-column="22" selection-end-line="175" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaskController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="e#40#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/employee/hod_profile.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22594">
-          <caret line="1027" column="47" selection-start-line="1027" selection-start-column="47" selection-end-line="1027" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -972,15 +960,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/app.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="807" column="3" lean-forward="true" selection-end-line="820" />
+        <state relative-caret-position="17094">
+          <caret line="807" column="3" selection-end-line="820" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/app.js">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CbpSubtaskController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="157" column="24" selection-start-line="157" selection-start-column="24" selection-end-line="157" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaskController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="165" column="7" selection-start-line="165" selection-start-column="7" selection-end-line="165" selection-end-column="7" />
+          <folding>
+            <element signature="e#40#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/employee/hod_profile.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="884" lean-forward="true" selection-start-line="884" selection-end-line="884" />
+          <folding>
+            <element signature="e#40324#52211#0#HTML" />
+            <element signature="e#44425#44443#0#HTML" expanded="true" />
+            <element signature="e#45679#45729#0#HTML" expanded="true" />
+            <element signature="e#48352#48358#0#HTML" expanded="true" />
+            <element signature="e#52290#60277#0#HTML" />
+            <element signature="e#61406#66726#0#HTML" />
+            <element signature="e#63090#63097#1#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Realtimenoti.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="65" column="25" lean-forward="true" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

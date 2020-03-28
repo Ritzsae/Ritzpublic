@@ -13,7 +13,8 @@
 
                                     <a class="list-group-item" id="pf_active" href="#pf" data-toggle="tab"><span><br><i
                                                     class="fa fa-user"></i><br>Profile</span></a>
-                                    <a class="list-group-item" href="#tasks" id="task_active" data-toggle="tab"><span><br><i
+                                    <a class="list-group-item" href="#tasks" id="task_active"
+                                       data-toggle="tab"><span><br><i
                                                     class="fa fa-tasks"></i><br>Tasks</span></a>
                                     <a class="list-group-item" href="#sharetasks" data-toggle="tab"><span><br><i
                                                     class="fa fa-share-square"></i><br>Shared Tasks</span></a>
@@ -649,12 +650,12 @@
                                                                                 <div class="shadow-sm p-3 mb-3 bg-white rounded panel-body pt-5 rounded">
 
                                                                                     <div class="row hod-cbp-subtask">
-                                                                                        
+
 
                                                                                         @if(empty($cbplist->cbp_sub_lists))
                                                                                         @else
                                                                                             @foreach($cbplist->cbp_sub_lists as $sublist)
-                                                                                                    
+
 
                                                                                                 <div class="col-md-6">
                                                                                                     <div class="panel-group"
@@ -719,84 +720,79 @@
                                                                             </div>
 
                                                                         </div>
-                                                                    @endforeach
-                                                                </div>
 
 
 
+                                                                        <!-- bootstrap modal section -->
 
-                                                                <!-- bootstrap modal section -->
+                                                                        <div class="modal fade" id="hod_report_modal"
+                                                                             tabindex="-1" role="dialog"
+                                                                             aria-labelledby="exampleModalCenterTitle"
+                                                                             aria-hidden="true">
+                                                                            <div class="modal-dialog modal-lg"
+                                                                                 role="document">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title"
+                                                                                            id="exampleModalLongTitle">
+                                                                                            <i
+                                                                                                    class="fa fa-info-circle pr-3"></i>
+                                                                                            <p class="d-inline-block"
+                                                                                               id="hot_report_title"></p>
+                                                                                        </h5>
 
-                                                                <div class="modal fade" id="hod_report_modal"
-                                                                     tabindex="-1" role="dialog"
-                                                                     aria-labelledby="exampleModalCenterTitle"
-                                                                     aria-hidden="true">
-                                                                    <div class="modal-dialog modal-lg" role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="exampleModalLongTitle"><i
-                                                                                            class="fa fa-info-circle pr-3"></i>
-                                                                                    <p class="d-inline-block"
-                                                                                       id="hot_report_title"></p></h5>
-
-                                                                                <button type="button" class="close"
-                                                                                        data-dismiss="modal"
-                                                                                        aria-label="Close">
-                                                                                    <span aria-hidden="true">&times;</span>
-                                                                                </button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <div class="form-group">
-                                                                                    <label for="message-text"
-                                                                                           class="col-form-label">Report
-                                                                                        Letter:</label>
-                                                                                    <textarea class="form-control"
-                                                                                              id="report_text"></textarea>
+                                                                                        <button type="button"
+                                                                                                class="close"
+                                                                                                data-dismiss="modal"
+                                                                                                aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <div class="form-group">
+                                                                                            <label for="message-text"
+                                                                                                   class="col-form-label">Report
+                                                                                                Letter:</label>
+                                                                                            <textarea
+                                                                                                    class="form-control"
+                                                                                                    id="report_text"></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <div class="form-group">
+                                                                                            <label for="message-text"
+                                                                                                   class="col-form-label">Percentage:</label>
+                                                                                            <input type="number"
+                                                                                                   class="form-control"
+                                                                                                   id="per"
+                                                                                                   min="0"
+                                                                                                   max="100"></input>
+                                                                                        </div>
+                                                                                        <input type="hidden"
+                                                                                               name="user_id"
+                                                                                               value="{{$cbplist->user_id}}"
+                                                                                               id="user_id">s
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button"
+                                                                                                class="btn btn-secondary"
+                                                                                                data-dismiss="modal">
+                                                                                            Close
+                                                                                        </button>
+                                                                                        <button type="button"
+                                                                                                class="btn btn-primary"
+                                                                                                id="{{$cbplist->cbp_id}}"
+                                                                                                onClick="hod_report(this.id)">
+                                                                                            Report
+                                                                                        </button>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <div class="form-group">
-                                                                                    <label for="message-text"
-                                                                                           class="col-form-label">Percentage:</label>
-                                                                                    <input type="number"
-                                                                                           class="form-control" id="per"
-                                                                                           min="0" max="100"></input>
-                                                                                </div>
-                                                                                <input type="hidden" name="user_id" value="{{$cbplist->user_id}}" id="user_id">s
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                        class="btn btn-secondary"
-                                                                                        data-dismiss="modal">Close
-                                                                                </button>
-                                                                                <button type="button"
-                                                                                        class="btn btn-primary"
-                                                                                        id="{{$cbplist->cbp_id}}"
-                                                                                        onClick="hod_report(this.id)">Report
-                                                                                </button>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
+
+                                                                        <!-- bootstrap modal section -->
+                                                                    @endforeach
                                                                 </div>
-
-                                                                <!-- bootstrap modal section -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                                                                 <div class="modal fade in hide" id="cbb_hot_modal"
@@ -1020,8 +1016,7 @@
                 // element.add("Active");
                 console.log('afeafeae');
 
-            }
-            else if(localStorage.getItem('task') == 'Active'){
+            } else if (localStorage.getItem('task') == 'Active') {
                 $('#task_active').addClass('active');
                 $('#tasks').addClass('in');
 
@@ -1030,8 +1025,7 @@
                 // var element = document.getElementById("cbp_active");
                 // element.add("Active");
                 console.log('task tab');
-            }
-            else {
+            } else {
                 console.log('test');
                 $('#pf_active').addClass('active');
                 $('#pf').addClass('in');
@@ -1052,10 +1046,6 @@
 
 
             //for profile
-
-
-
-
 
 
             if (localStorage.getItem('Hod_id') !== null) {
@@ -1154,20 +1144,21 @@
 
                     main_cbp_id = $(this).data('main_cbp_id');
                     var config_title = $(this).data('config_title');
-                    cbp_list_id=$(this).data('')
+                    cbp_list_id = $(this).data('')
                     $('#hot_report_title').append(config_title);
                     // alert(config_id+" "+config_title); for test
                     $('#hod_report_modal').modal('show');
                 });
-                function hod_report(obj){
-                    var id=obj.id;
+
+                function hod_report(obj) {
+                    var id = obj.id;
                     alert(id);
                 }
 
                 $('#hod_report_submit').click(function () {
                     // console.log(main_cbp_id);
                     var report_text = $('#report_text').val();
-                    var user_id=$('#user_id').val();
+                    var user_id = $('#user_id').val();
                     var per = $('#per').val();
                     //  alert(user_id);
                     // console.log(report_text);
@@ -1178,7 +1169,7 @@
                         method: "POST",
                         url: "/reportHot",
 
-                        data: {config_id, report_text, per,receiver_id,main_cbp_id}
+                        data: {config_id, report_text, per, receiver_id, main_cbp_id}
                     }).done(function (data) {
                         console.log("S blade: [task/create] component :[employee dropdown] from:app.js Data => Employee count" + data.length);
                         if (data.success) {
@@ -1189,14 +1180,12 @@
                             $('#hod_report_modal').modal('hide');
 
 
-
-
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Successfully Reported',
                                 text: '',
                                 button: "Close",
-                                })
+                            })
 
 
                         } else {
