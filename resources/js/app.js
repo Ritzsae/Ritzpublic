@@ -817,6 +817,7 @@ $(function () {
 const app = new Vue({
     el: '#app',
 });
+//test
 
 // Custom Error Message automatically hide
 window.setTimeout(function() {
