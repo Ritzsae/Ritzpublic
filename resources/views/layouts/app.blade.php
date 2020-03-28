@@ -71,7 +71,12 @@
         </main>
         @include('components.footer')
     </div>
-    
+    <script>
+
+
+    </script>
 
 </body>
+
+
 </html>

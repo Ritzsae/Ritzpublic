@@ -3,6 +3,7 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 import {faExclamationCircle} from "@fortawesome/free-solid-svg-icons/faExclamationCircle";
 
 //beautiful sweet alert
@@ -46,6 +47,8 @@ Vue.component('Realtimenoti', require('./components/realtimenoti.vue').default);
 // sweetlaet2
 import Swal from 'sweetalert2'
 window.Swal = Swal;
+
+
 
 // CommonJS
 // const Swal = require('sweetalert2')
@@ -285,7 +288,8 @@ Dropzone.options.taskform = {
             // Tell Dropzone to process all queued files.
         });
 
-    }
+
+    },
 };
 
 //this declaration is for missiondropzone
@@ -806,6 +810,8 @@ $(function () {
     // $(activeTab).addClass("active in");
     // $('a[href="'+ activeTab +'"]').tab('show');
 });
+
+
 
 
 const app = new Vue({

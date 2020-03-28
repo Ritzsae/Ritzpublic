@@ -9,8 +9,27 @@
 @endsection
 @push('scripts')
     <script>
+
+
+
+        //add function to work with photo editor
+
+
+
+
+        function ykdz(){
+            console.log('fefe');
+        }
+
+        //add function to work with photo editor
+
+
+
         window.onload = function () {
+
             $(function () {
+
+
                 //department dropdown in create.blade.php task
                 $.ajax({
                     method: "GET",
