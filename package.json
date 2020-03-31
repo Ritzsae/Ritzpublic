@@ -33,6 +33,7 @@
         "console.pretty": "^0.1.0",
         "datatables.net-dt": "^1.10.20",
         "dropzone": "^5.5.1",
+        "filereader": "^0.10.3",
         "html2canvas": "^1.0.0-rc.5",
         "moment": "^2.24.0",
         "orgchart": "^2.1.10",

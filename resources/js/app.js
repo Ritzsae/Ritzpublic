@@ -1,3 +1,4 @@
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -9,8 +10,11 @@ import {faExclamationCircle} from "@fortawesome/free-solid-svg-icons/faExclamati
 //beautiful sweet alert
 {/* <script type="text/javascript" src="http://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="http://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.js"></script> */}
+
 require('./bootstrap');
+
 require('./dt');
+
 require('./dtbs');
 
 
@@ -37,6 +41,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('Piechart', require('./components/Piechart.vue').default);
 Vue.component('progressbar', require('./components/progressbar.vue').default);
 Vue.component('Realtimenoti', require('./components/realtimenoti.vue').default);
+Vue.component('photoeditormodal', require('./components/photoeditormodal.vue').default);
 
 
 /**
@@ -54,14 +59,16 @@ window.Swal = Swal;
 // const Swal = require('sweetalert2')
 
 
-
 import html2canvas from 'html2canvas';
+
 
 import swal from 'bootstrap-sweetalert';
 
 
 
 import {ImageEditor} from '@toast-ui/vue-image-editor';
+
+
 
 // import swal from 'bootstrap-sweetalert';
 
@@ -92,6 +99,7 @@ import {
     faAngleDown, faTrashAlt, faBookmark, faCheckCircle, faAtlas, faDownload, faMailBulk, faCog, faSortDown, faBell,faKey,faExchangeAlt,faRedoAlt,faCircle,faShoppingCart,faHistory,faSearch
 
 } from '@fortawesome/free-solid-svg-icons';
+
 library.add(
 
     faHome,faTasks,faEdit,
@@ -105,13 +113,21 @@ library.add(
 
 dom.watch();
 
+
 //this declaration is for datetime picker in task create.balde.php
+
+
 window.moment = require('moment');
+
+
 require('tempusdominus-bootstrap-4');
 
+
 //this declaration is for ckeditor
+
 window.ClassicEditor = require( '@ckeditor/ckeditor5-build-classic');
 //this declaration is for select2
+
 require('select2');
 //this declaration is for dropzone
 window.Dropzone = require('dropzone');
@@ -123,7 +139,6 @@ window.taskeditor = null;
 window.projectEditor = null;
 window.editor_feedback = null;
 window.remark=null;
-
 
 
 //this declaration is for taskdropzone
@@ -154,11 +169,25 @@ Dropzone.options.taskform = {
             if (file==myDropZone.files[0]) {
 
                 $('.dz-preview:first').hide();
-       
+
             }
-            console.log(myDropZone.files.length);
+            var reader = new FileReader();
+
+
+            reader.readAsDataURL(file);
+
+            reader.onload = function(event) {
+                //   event.target.result - is dataURL data
+                // console.log("data url: " + event.target.result);
+                window.localStorage.setItem('current_image',event.target.result);
+                console.log(window.localStorage.getItem('current_image'));
+
+
+            };
+
             // console.log('New File Added');
         });
+
 
         this.on("success",function(data){
           console.log(data);
@@ -174,12 +203,12 @@ Dropzone.options.taskform = {
             })
             $( ".swal2-confirm" ).click(function() {
                 task_id = data.xhr.response;
-               
- 
+
+
                   window.location = "/task/"+task_id;
-               
+
             });
-          
+
 
           }
 
@@ -349,11 +378,13 @@ Dropzone.options.missionform = {
 
             var missionZone = this;
             let mission_id=0;
+
             $.fn.addNewImage(missionZone);
             this.on("queuecomplete", function (progress) {
                 //   window.location = "/mission/"+mission_id;
                 console.log("Uploaded!!!");
             });
+
             this.on("error", function (file, response) {
                 console.log(response);
             });
@@ -372,6 +403,7 @@ Dropzone.options.missionform = {
                 data.append("issue_resolve_ways", editor3.getData());
                 data.append("remark", $('#remark').val());
             });
+
             this.on("success", function (data) {
 
                 //  mission_id = data.xhr.response;
@@ -695,19 +727,23 @@ $(function () {
         allowClear: true
     });
 
+
     //project create form (job duration)
     $(".job_duration").select2({
         placeholder: "Please select years",
         allowClear: true
     });
 
+
     $('#showcbp').click(function() {
         $('#showcbpdiv').show();
     });
 
+
     $('#refresh_page').click(function() {
         return window.location.assign(window.location.href)
     });
+
 
     $('#to_change_zaw').click(function() {
         if($('.uniandzawgyi').hasClass('uni')){
@@ -721,17 +757,28 @@ $(function () {
 
 
     $('#to_change_uni').click(function() {
+
+
+
         if($('.uniandzawgyi').hasClass('zawgyi')){
+
             $('.uniandzawgyi').removeClass('zawgyi');
 
         }
         $('.uniandzawgyi').addClass('uni');
 
+
+
+
     });
+
+
 
     $('.sub_department').select2({
         placeholder:"Select a Sub_department",
     });
+
+
 
     $('.position').select2({
         placeholder:"Select a position",
@@ -800,7 +847,6 @@ $(function () {
 
         }
 
-
     // this function is for pagination with tab-panes in profile.blade.php
     // var activeTab  = window.location.hash;
     // if (activeTab==""){
@@ -810,9 +856,6 @@ $(function () {
     // $(activeTab).addClass("active in");
     // $('a[href="'+ activeTab +'"]').tab('show');
 });
-
-
-
 
 const app = new Vue({
     el: '#app',

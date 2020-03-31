@@ -11846,6 +11846,16 @@ a.text-dark:focus {
   font-family: Zawgyi-One;
 }
 
+#photoeditor {
+  width: 1111px !important;
+  max-width: 1500px !important;
+}
+
+#fafe {
+  max-width: 1500px !important;
+  width: 100% !important;
+}
+
 .uni {
   font-family: Myanmar3;
 }
