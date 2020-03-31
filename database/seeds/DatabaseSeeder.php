@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CBPSeeder::class,
             CBPSubtaskSeeder::class,
+            ProjectSeeder::class,
             HistoriesSeeder::class
 
         ]);
