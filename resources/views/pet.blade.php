@@ -24,39 +24,41 @@
 {{--</div>--}}
 
 {{--@endsection--}}
-{{--@push('scripts')--}}
-{{--    <script>--}}
+@push('scripts')
+    <script>
+var imagee;
+     window.onload = function () {
+        // Image editor
+         imagee = new tui.ImageEditor('#tui-image-editor-container', {
+            includeUI: {
 
-{{--     window.onload = function () {--}}
-{{--        // Image editor--}}
-{{--        var imageEditor = new tui.ImageEditor('#tui-image-editor-container', {--}}
-{{--            includeUI: {--}}
-{{--                --}}
-{{--                loadImage: {--}}
-{{--                    path: 'img/sampleImage2.png',--}}
-{{--                    name: 'SampleImage',--}}
-{{--                },--}}
-{{--                --}}
-{{--                theme: blackTheme, // or whiteTheme--}}
-{{--                initMenu: 'filter',--}}
-{{--                uiSize: {--}}
-{{--                    height:'580px',--}}
-{{--                    width:'50%'--}}
-{{--                },--}}
-{{--                --}}
-{{--                menuBarPosition: 'left',--}}
-{{--            },--}}
-{{--                cssMaxWidth: 300,--}}
-{{--                cssMaxHeight: 300,--}}
+                loadImage: {
+                    path: 'img/sampleImage2.png',
+                    name: 'SampleImage',
+                },
 
-{{--        });--}}
-{{--        --}}
+                theme: blackTheme, // or whiteTheme
+                initMenu: 'filter',
+                uiSize: {
+                    height:'580px',
+                    width:'50%'
+                },
 
-{{--        --}}
+                menuBarPosition: 'left',
+            },
+                cssMaxWidth: 300,
+                cssMaxHeight: 300,
 
-{{--     }--}}
-{{--    </script>--}}
+        });
 
-{{--@endpush--}}
+
+
+     }
+     function savedatatosaver(){
+         console.log(imagee.getImageName());
+     }
+    </script>
+
+@endpush
 
 {{-->>>>>>> f14bff0a2a2fe8d4de8fd409ab58ccf47ded020a--}}

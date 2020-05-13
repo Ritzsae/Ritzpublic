@@ -66,8 +66,6 @@ import swal from 'bootstrap-sweetalert';
 
 
 
-import {ImageEditor} from '@toast-ui/vue-image-editor';
-
 
 
 // import swal from 'bootstrap-sweetalert';
