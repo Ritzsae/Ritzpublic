@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -9,7 +8,8 @@ import {faExclamationCircle} from "@fortawesome/free-solid-svg-icons/faExclamati
 
 //beautiful sweet alert
 {/* <script type="text/javascript" src="http://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-<script type="text/javascript" src="http://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.js"></script> */}
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.js"></script> */
+}
 
 require('./bootstrap');
 
@@ -37,7 +37,6 @@ require('orgchart');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 
-
 Vue.component('Piechart', require('./components/Piechart.vue').default);
 Vue.component('progressbar', require('./components/progressbar.vue').default);
 Vue.component('Realtimenoti', require('./components/realtimenoti.vue').default);
@@ -51,8 +50,8 @@ Vue.component('photoeditormodal', require('./components/photoeditormodal.vue').d
  */
 // sweetlaet2
 import Swal from 'sweetalert2'
-window.Swal = Swal;
 
+window.Swal = Swal;
 
 
 // CommonJS
@@ -65,12 +64,10 @@ import html2canvas from 'html2canvas';
 import swal from 'bootstrap-sweetalert';
 
 
-
-
-
 // import swal from 'bootstrap-sweetalert';
 
-import { config, library, dom } from '@fortawesome/fontawesome-svg-core';
+import {config, library, dom} from '@fortawesome/fontawesome-svg-core';
+
 config.autoReplaceSvg = 'nest';
 import {
     faHome,
@@ -94,20 +91,35 @@ import {
     faClock,
     faAngleUp,
 
-    faAngleDown, faTrashAlt, faBookmark, faCheckCircle, faAtlas, faDownload, faMailBulk, faCog, faSortDown, faBell,faKey,faExchangeAlt,faRedoAlt,faCircle,faShoppingCart,faHistory,faSearch
+    faAngleDown,
+    faTrashAlt,
+    faBookmark,
+    faCheckCircle,
+    faAtlas,
+    faDownload,
+    faMailBulk,
+    faCog,
+    faSortDown,
+    faBell,
+    faKey,
+    faExchangeAlt,
+    faRedoAlt,
+    faCircle,
+    faShoppingCart,
+    faHistory,
+    faSearch
 
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
-
-    faHome,faTasks,faEdit,
-    faProjectDiagram,faAddressCard,
-    faSignOutAlt,faUser,faUsers,
-    faChalkboardTeacher,faBuilding,
-    faNetworkWired,faPlusCircle,faCheck
-    ,faShareSquare,faCalendarAlt,faInfoCircle
-    ,faAngleLeft,faAngleRight,faClock,
-    faAngleUp,faAngleDown,faTrashAlt,faBookmark,faCheckCircle,faAtlas,faDownload,faBell,faMailBulk,faCog,faSortDown,faKey,faExchangeAlt,faRedoAlt,faCircle,faShoppingCart,faHistory,faSearch);
+    faHome, faTasks, faEdit,
+    faProjectDiagram, faAddressCard,
+    faSignOutAlt, faUser, faUsers,
+    faChalkboardTeacher, faBuilding,
+    faNetworkWired, faPlusCircle, faCheck
+    , faShareSquare, faCalendarAlt, faInfoCircle
+    , faAngleLeft, faAngleRight, faClock,
+    faAngleUp, faAngleDown, faTrashAlt, faBookmark, faCheckCircle, faAtlas, faDownload, faBell, faMailBulk, faCog, faSortDown, faKey, faExchangeAlt, faRedoAlt, faCircle, faShoppingCart, faHistory, faSearch);
 
 dom.watch();
 
@@ -123,7 +135,7 @@ require('tempusdominus-bootstrap-4');
 
 //this declaration is for ckeditor
 
-window.ClassicEditor = require( '@ckeditor/ckeditor5-build-classic');
+window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
 //this declaration is for select2
 
 require('select2');
@@ -136,15 +148,16 @@ window.editor3 = null;
 window.taskeditor = null;
 window.projectEditor = null;
 window.editor_feedback = null;
-window.remark=null;
+window.remark = null;
 
 
 //this declaration is for taskdropzone
+
 Dropzone.options.taskform = {
 
     // maxFiles:11,
     paramName: "task_file",
-    uploadMultiple : true,
+    uploadMultiple: true,
     addRemoveLinks: true,
     autoProcessQueue: false,
     dictResponseError: 'Server not Configured',
@@ -152,7 +165,6 @@ Dropzone.options.taskform = {
     init: function () {
         var myDropZone = this;
         $.fn.addNewImage(myDropZone);
-        var task_id=0;
 
         this.on("queuecomplete", function (progress) {
 
@@ -164,9 +176,22 @@ Dropzone.options.taskform = {
         });
         this.on("addedfile", function (file, response) {
 
-            if (file==myDropZone.files[0]) {
+            var for_id = myDropZone.files.length - 1;
+
+            if (file == myDropZone.files[0]) {
+                document.getElementsByClassName('dz-preview')[0].setAttribute("id", "for_edit_id" + 0);
 
                 $('.dz-preview:first').hide();
+                console.log('fffffffffaaaaaa')
+
+            } else {
+
+                document.getElementsByClassName('dz-preview')[for_id].setAttribute("id", "for_edit_id" + for_id);
+                document.getElementsByClassName('dz-preview')[for_id].querySelector(".dz-edit").addEventListener("click", ykdz);
+                document.getElementById('foredit').addEventListener("click", function () {
+                    savedatatosaver("for_edit_id" + for_id);
+                });
+
 
             }
             var reader = new FileReader();
@@ -174,10 +199,10 @@ Dropzone.options.taskform = {
 
             reader.readAsDataURL(file);
 
-            reader.onload = function(event) {
+            reader.onload = function (event) {
                 //   event.target.result - is dataURL data
                 // console.log("data url: " + event.target.result);
-                window.localStorage.setItem('current_image',event.target.result);
+                window.localStorage.setItem('current_image', event.target.result);
                 console.log(window.localStorage.getItem('current_image'));
 
 
@@ -187,28 +212,28 @@ Dropzone.options.taskform = {
         });
 
 
-        this.on("success",function(data){
-          console.log(data);
-          if(data){
-            Swal.fire({
-                title: 'Great Job',
-                text: "Task create successfully",
-                icon: 'success',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'OK'
-            })
-            $( ".swal2-confirm" ).click(function() {
-                task_id = data.xhr.response;
+        this.on("success", function (data) {
+            console.log(data);
+            if (data) {
+                Swal.fire({
+                    title: 'Great Job',
+                    text: "Task create successfully",
+                    icon: 'success',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'OK'
+                })
+                $(".swal2-confirm").click(function () {
+                    task_id = data.xhr.response;
 
 
-                  window.location = "/task/"+task_id;
+                    window.location = "/task/" + task_id;
 
-            });
+                });
 
 
-          }
+            }
 
         });
         this.on("sending", function (file, xhr, data) {
@@ -223,26 +248,24 @@ Dropzone.options.taskform = {
         $('#taskform-submit').on("click", function () {
 
 
-
-
-            var old_image=$('.old_image').val();
-            var task_title=$(".task_title").val().length;
+            var old_image = $('.old_image').val();
+            var task_title = $(".task_title").val().length;
             // alert(task_title);
             //  var project_code = $('.project_code').val().length;
-             var department_append =$('.department_append').find(':selected').val();
-             var project_editor=taskeditor.getData().length;
-             var employee=$('.employee').val().length;
-             var start_time=$('.task_start_time').val();
-             var end_time=$('.task_end_time').val();
+            var department_append = $('.department_append').find(':selected').val();
+            var project_editor = taskeditor.getData().length;
+            var employee = $('.employee').val().length;
+            var start_time = $('.task_start_time').val();
+            var end_time = $('.task_end_time').val();
             var hasError = true;
             //  alert(start_time);
-            if(!task_title){
-                hasError=false;
+            if (!task_title) {
+                hasError = false;
 
                 $('#task-title-append').find("label").remove();
                 $('#task-title-append').append("<label> * Please Enter Test Title.</label>");
 
-            }else{
+            } else {
                 $('#task-title-append').find("label").remove();
             }
             //  if(!project_code){
@@ -254,64 +277,64 @@ Dropzone.options.taskform = {
             //     $('.project_code_append').find("label").remove();
 
             //  }
-             if(old_image){
-                 hasError=true;
-             }
-             else if(myDropZone.files.length<1){
-                hasError=false;
+            if (old_image) {
+                hasError = true;
+            }
+            else if (myDropZone.files.length < 1) {
+                hasError = false;
                 $('.task_image').find("label").remove();
                 $('.task_image').append("<label> * Please Choosevvvv Image.</label>");
-             }else{
+            } else {
                 $('.task_image').find("label").remove();
-             }
-             if(!project_editor){
-                hasError=false;
+            }
+            if (!project_editor) {
+                hasError = false;
                 $('.project_editor_append').find('label').remove();
                 $('.project_editor_append').append("<label> * Please Enter Description.</label>");
-             }else{
+            } else {
                 $('.project_editor_append').find('label').remove();
-             }
+            }
 
-             if(!employee){
-                hasError=false;
+            if (!employee) {
+                hasError = false;
                 $('.employee_append').find('label').remove();
                 $('.employee_append').append("<label> * Please Select Employee.</label>")
-             }else{
+            } else {
                 $('.employee_append').find('label').remove();
-             }
+            }
 
-             if(!department_append){
-                hasError=false;
+            if (!department_append) {
+                hasError = false;
                 $('.department_append').find('label').remove();
                 $('.department_append').append("<label> * Please Enter Department.</label>");
-             }else{
+            } else {
                 $('.department_append').find('label').remove();
-             }
-             if(!start_time){
-                hasError=false;
+            }
+            if (!start_time) {
+                hasError = false;
                 $('.start_time_append').find('label').remove();
                 $('.start_time_append').append("<label> * Please Select Start Time.</label>")
-             }else{
+            } else {
 
                 $('.start_time_append').find('label').remove();
 
-             }
-             if(!end_time){
-                hasError=false;
+            }
+            if (!end_time) {
+                hasError = false;
                 $('.end_time_append').find('label').remove();
                 $('.end_time_append').append("<label> * Please Select End Time .</label>")
-             }else{
+            } else {
 
                 $('.end_time_append').find('label').remove();
 
-             }
-             if(hasError){
-               myDropZone.processQueue();
-             }
+            }
+            if (hasError) {
+                myDropZone.processQueue();
+            }
 
 
             //uncomment for testing the vales of task create.blade.php
-                //  alert($("#project_code").val());
+            //  alert($("#project_code").val());
             // Tell Dropzone to process all queued files.
         });
 
@@ -322,14 +345,14 @@ Dropzone.options.taskform = {
 //this declaration is for missiondropzone
 Dropzone.options.missionform = {
     maxFilesize: 11,
-    maxFiles:11,
+    maxFiles: 11,
     paramName: "mission_file",//mission_file[]
     uploadMultiple: true,
     addRemoveLinks: true,
     autoProcessQueue: false,
     dictResponseError: 'Server not Configured',
     acceptedFiles: "image/*",
-    parallelUploads:11,
+    parallelUploads: 11,
     init: function () {
 
 
@@ -374,143 +397,141 @@ Dropzone.options.missionform = {
 //             var resolved_way = editor3.getData().length;
 //             var remark = $('#remark').val()
 
-            var missionZone = this;
-            let mission_id=0;
+        var missionZone = this;
+        let mission_id = 0;
 
-            $.fn.addNewImage(missionZone);
-            this.on("queuecomplete", function (progress) {
-                //   window.location = "/mission/"+mission_id;
-                console.log("Uploaded!!!");
-            });
+        $.fn.addNewImage(missionZone);
+        this.on("queuecomplete", function (progress) {
+            //   window.location = "/mission/"+mission_id;
+            console.log("Uploaded!!!");
+        });
 
-            this.on("error", function (file, response) {
-                console.log(response);
-            });
-            this.on("addedfile", function (file, response) {
-                if (file==missionZone.files[0])
-                    $('.dz-preview:first').hide(  );
-                 console.log(missionZone.files.length);
-            });
-            this.on("sending", function (file, xhr, data) {
-                data.append("job_type", $('#job_type').val());
-                data.append("job_target", $('#job_target').val());
-                data.append("job_obj", editor1.getData());
-                data.append("emp_id", $('#responsible_person').find(':selected').val());
-                data.append("jobfinished_date", $('#job_finished_date').val());
-                data.append("doing_methods", editor2.getData());
-                data.append("issue_resolve_ways", editor3.getData());
-                data.append("remark", $('#remark').val());
-            });
+        this.on("error", function (file, response) {
+            console.log(response);
+        });
+        this.on("addedfile", function (file, response) {
+            if (file == missionZone.files[0])
+                $('.dz-preview:first').hide();
+            console.log(missionZone.files.length);
+        });
+        this.on("sending", function (file, xhr, data) {
+            data.append("job_type", $('#job_type').val());
+            data.append("job_target", $('#job_target').val());
+            data.append("job_obj", editor1.getData());
+            data.append("emp_id", $('#responsible_person').find(':selected').val());
+            data.append("jobfinished_date", $('#job_finished_date').val());
+            data.append("doing_methods", editor2.getData());
+            data.append("issue_resolve_ways", editor3.getData());
+            data.append("remark", $('#remark').val());
+        });
 
-            this.on("success", function (data) {
+        this.on("success", function (data) {
 
-                //  mission_id = data.xhr.response;
-                 console.log(data);
-            });
-            $('#missionform-submit').on("click", function () {
-                var old_mission_image = $(".old_mission_image").val();
-               var job_type=$(".job_type").val().length;
-               var job_target=$(".job_target").val().length;
-                var mission_editor=editor1.getData().length;
-                 var assignee= $('.assignee').val().length;
-                var finished_date=$('.finished_date').val().length;
-                var methods=editor2.getData().length;
-                var resolved_way=editor3.getData().length;
-                var remark=$('#remark').val()
+            //  mission_id = data.xhr.response;
+            console.log(data);
+        });
+        $('#missionform-submit').on("click", function () {
+            var old_mission_image = $(".old_mission_image").val();
+            var job_type = $(".job_type").val().length;
+            var job_target = $(".job_target").val().length;
+            var mission_editor = editor1.getData().length;
+            var assignee = $('.assignee').val().length;
+            var finished_date = $('.finished_date').val().length;
+            var methods = editor2.getData().length;
+            var resolved_way = editor3.getData().length;
+            var remark = $('#remark').val()
 
 // alert(resolved_way);
-var hasError = true;
+            var hasError = true;
 
-if(!job_type){
-    hasError=false;
-    $('.job_type_append').find("p").remove();
-    $('.job_type_append').append("<p> * Please Enter Job Type.</p>");
-}else{
-    $('.job_type_append').find("p").remove();
-}
+            if (!job_type) {
+                hasError = false;
+                $('.job_type_append').find("p").remove();
+                $('.job_type_append').append("<p> * Please Enter Job Type.</p>");
+            } else {
+                $('.job_type_append').find("p").remove();
+            }
 
-if(!job_target){
-    hasError=false;
-    $('.job_target_append').find("p").remove();
-    $('.job_target_append').append("<p> * Please Enter Job Target.</p>");
-}else{
-    $('.job_target_append').find("p").remove();
-}
+            if (!job_target) {
+                hasError = false;
+                $('.job_target_append').find("p").remove();
+                $('.job_target_append').append("<p> * Please Enter Job Target.</p>");
+            } else {
+                $('.job_target_append').find("p").remove();
+            }
 
-if(!mission_editor){
-    hasError=false;
-    $('.job_obj_append').find("p").remove();
-    $('.job_obj_append').append("<p> * Please Enter Job Objective.</p>");
-}else{
-    $('.job_obj_append').find("p").remove();
-}
+            if (!mission_editor) {
+                hasError = false;
+                $('.job_obj_append').find("p").remove();
+                $('.job_obj_append').append("<p> * Please Enter Job Objective.</p>");
+            } else {
+                $('.job_obj_append').find("p").remove();
+            }
 
-if(!assignee){
-    hasError=false;
-    $('.employee_append').find("p").remove();
-    $('.employee_append').append("<p> * Please Enter Assignee.</p>");
-}else{
-    $('.employee_append').find("p").remove();
-}
+            if (!assignee) {
+                hasError = false;
+                $('.employee_append').find("p").remove();
+                $('.employee_append').append("<p> * Please Enter Assignee.</p>");
+            } else {
+                $('.employee_append').find("p").remove();
+            }
 
-if(!finished_date){
-    hasError=false;
-    $('.finished_date_append').find("p").remove();
-    $('.finished_date_append').append("<p> * Please Enter Finish Date.</p>");
-}else{
-    $('.finished_date_append').find("p").remove();
-}
+            if (!finished_date) {
+                hasError = false;
+                $('.finished_date_append').find("p").remove();
+                $('.finished_date_append').append("<p> * Please Enter Finish Date.</p>");
+            } else {
+                $('.finished_date_append').find("p").remove();
+            }
 
-if(!methods){
-    hasError=false;
-    $('.doing_method_append').find("p").remove();
-    $('.doing_method_append').append("<p> * Please Enter Doing Methods.</p>");
-}else{
-    $('.doing_method_append').find("p").remove();
-}
+            if (!methods) {
+                hasError = false;
+                $('.doing_method_append').find("p").remove();
+                $('.doing_method_append').append("<p> * Please Enter Doing Methods.</p>");
+            } else {
+                $('.doing_method_append').find("p").remove();
+            }
 
-if (old_mission_image) {
-    hasError = true;
-  } else if(missionZone.files.length<2){
-    hasError=false;
-    $('.mission_image').find("p").remove();
-    $('.mission_image').append("<p> * Please Choose Image.</p>");
- }else{
-    $('.mission_image').find("p").remove();
- }
+            if (old_mission_image) {
+                hasError = true;
+            } else if (missionZone.files.length < 2) {
+                hasError = false;
+                $('.mission_image').find("p").remove();
+                $('.mission_image').append("<p> * Please Choose Image.</p>");
+            } else {
+                $('.mission_image').find("p").remove();
+            }
 
-if(!resolved_way){
-    hasError=false;
-    $('.resolved_way_append').find("p").remove();
-    $('.resolved_way_append').append("<p> * Please Enter Resolved Way.</p>");
-}else{
-    $('.resolved_way_append').find("p").remove();
-}
+            if (!resolved_way) {
+                hasError = false;
+                $('.resolved_way_append').find("p").remove();
+                $('.resolved_way_append').append("<p> * Please Enter Resolved Way.</p>");
+            } else {
+                $('.resolved_way_append').find("p").remove();
+            }
 
-if(!remark){
-    hasError=false;
-    $('.remark_append').find("p").remove();
-    $('.remark_append').append("<p> * Please Enter Remark.</p>");
-}else{
-    $('.remark_append').find("p").remove();
-}
+            if (!remark) {
+                hasError = false;
+                $('.remark_append').find("p").remove();
+                $('.remark_append').append("<p> * Please Enter Remark.</p>");
+            } else {
+                $('.remark_append').find("p").remove();
+            }
 
-if(hasError){
-    missionZone.processQueue();
-  }
-
-
+            if (hasError) {
+                missionZone.processQueue();
+            }
 
 
-            });
+        });
     }
 };
 // Profile
 Dropzone.options.profileform = {
     maxFilesize: 1,
-    maxFiles:11,
+    maxFiles: 11,
     paramName: "profile_img",
-    uploadMultiple : true,
+    uploadMultiple: true,
     addRemoveLinks: true,
     autoProcessQueue: false,
     dictResponseError: 'Server not Configured',
@@ -529,15 +550,15 @@ Dropzone.options.profileform = {
         });
         this.on("addedfile", function (file, response) {
 
-            if (file==profileDropZone.files[0]) {
+            if (file == profileDropZone.files[0]) {
 
                 $('.dz-preview:first').hide();
 
             }
 
         });
-        this.on("success",function(data){
-          console.log(data);
+        this.on("success", function (data) {
+            console.log(data);
 
         });
         this.on("sending", function (file, xhr, data) {
@@ -552,11 +573,11 @@ Dropzone.options.profileform = {
     }
 };
 
-Dropzone.options.reportform= {
+Dropzone.options.reportform = {
     maxFilesize: 1,
-    maxFiles:11,
+    maxFiles: 11,
     paramName: "reportfile",
-    uploadMultiple : true,
+    uploadMultiple: true,
     addRemoveLinks: true,
     autoProcessQueue: false,
     dictResponseError: 'Server not Configured',
@@ -574,15 +595,15 @@ Dropzone.options.reportform= {
             console.log(response);
         });
         this.on("addedfile", function (file, response) {
-            if (file==myDropZone.files[0]) {
+            if (file == myDropZone.files[0]) {
                 $('.dz-preview:first').hide();
             }
-            console.log("Images length>>"+myDropZone.files.length)
+            console.log("Images length>>" + myDropZone.files.length)
 
         });
-        this.on("success",function(data){
+        this.on("success", function (data) {
 
-            window.location="/profile";
+            window.location = "/profile";
         });
         this.on("sending", function (file, xhr, data) {
 
@@ -593,17 +614,17 @@ Dropzone.options.reportform= {
         $('#report_submit').on("click", function () {
             var hasError = true;
 
-            if(myDropZone.files.length<2){
-                hasError=false;
+            if (myDropZone.files.length < 2) {
+                hasError = false;
                 $('.report_task_image').find("p").remove();
                 $('.report_task_image').append("<p> * Please Choose Image  First.</p>");
-             }else{
+            } else {
                 $('.report_task_image').find("p").remove();
-             }
+            }
 
-             if(hasError){
+            if (hasError) {
                 myDropZone.processQueue();
-              }
+            }
 
             //uncomment for testing the vales of task create.blade.php
             //  alert(editor_feedback.getData());
@@ -614,22 +635,22 @@ Dropzone.options.reportform= {
 };
 
 
-$.fn.addNewImage=function(myDropZone) {
+$.fn.addNewImage = function (myDropZone) {
     var xhr = new XMLHttpRequest();
 
 // Use JSFiddle logo as a sample image to avoid complicating
 // this example with cross-domain issues.
-    xhr.open( "GET", "http://localhost:8000/images/sae-logo.png", true );
+    xhr.open("GET", "http://localhost:8000/images/sae-logo.png", true);
 
 // Ask for the result as an ArrayBuffer.
     xhr.responseType = "arraybuffer";
 
-    xhr.onload = function( e ) {
+    xhr.onload = function (e) {
         // Obtain a blob: URL for the image data.
-        var arrayBufferView = new Uint8Array( this.response );
-        var blob = new Blob( [ arrayBufferView ], { type: "image/jpeg" } );
+        var arrayBufferView = new Uint8Array(this.response);
+        var blob = new Blob([arrayBufferView], {type: "image/jpeg"});
         var urlCreator = window.URL || window.webkitURL;
-        var imageUrl = urlCreator.createObjectURL( blob );
+        var imageUrl = urlCreator.createObjectURL(blob);
 
         var parts = [blob, new ArrayBuffer()];
 
@@ -654,37 +675,34 @@ $(function () {
         "ordering": true,
         "info": true,
         "autoWidth": false,
-        "dom":'tp'
+        "dom": 'tp'
 
     });
 
-    $('#customSearchBox').keyup(function(){
-        users.search($(this).val()).draw() ;
+    $('#customSearchBox').keyup(function () {
+        users.search($(this).val()).draw();
     })
 
 
     // $('#example2').DataTable({
-        
+
     //   });
 
-    $("#reject_submit").click(function(e){
+    $("#reject_submit").click(function (e) {
 
-        var remark_editor=remark.getData().replace(/<[^>]*>/gi, '').length;
+        var remark_editor = remark.getData().replace(/<[^>]*>/gi, '').length;
         //  alert(remark_editor);
-        if( !remark_editor ) {
+        if (!remark_editor) {
             $('#remark-box').find("p").remove();
             $('#remark-box').append("<p> * Please Enter Description First.</p>");
             e.preventDefault();
 
 
-         }else{
-            $( "#remark_form" ).submit();
-         }
+        } else {
+            $("#remark_form").submit();
+        }
 
     });
-
-   
-
 
 
     //Default configration for datetime picker
@@ -699,7 +717,8 @@ $(function () {
             today: 'fa fa-calendar-check-o',
             clear: 'fa fa-trash-alt',
             close: 'fa fa-clock'
-        } });
+        }
+    });
     //configuration for tooltip
     $('[data-toggle="tooltip"]').tooltip();
     //configration for select2 for department dropdown
@@ -733,18 +752,18 @@ $(function () {
     });
 
 
-    $('#showcbp').click(function() {
+    $('#showcbp').click(function () {
         $('#showcbpdiv').show();
     });
 
 
-    $('#refresh_page').click(function() {
+    $('#refresh_page').click(function () {
         return window.location.assign(window.location.href)
     });
 
 
-    $('#to_change_zaw').click(function() {
-        if($('.uniandzawgyi').hasClass('uni')){
+    $('#to_change_zaw').click(function () {
+        if ($('.uniandzawgyi').hasClass('uni')) {
             $('.uniandzawgyi').removeClass('uni');
 
         }
@@ -753,12 +772,10 @@ $(function () {
     });
 
 
-
-    $('#to_change_uni').click(function() {
-
+    $('#to_change_uni').click(function () {
 
 
-        if($('.uniandzawgyi').hasClass('zawgyi')){
+        if ($('.uniandzawgyi').hasClass('zawgyi')) {
 
             $('.uniandzawgyi').removeClass('zawgyi');
 
@@ -766,44 +783,40 @@ $(function () {
         $('.uniandzawgyi').addClass('uni');
 
 
-
-
     });
-
 
 
     $('.sub_department').select2({
-        placeholder:"Select a Sub_department",
+        placeholder: "Select a Sub_department",
     });
-
 
 
     $('.position').select2({
-        placeholder:"Select a position",
+        placeholder: "Select a position",
     });
 
     $('.team').select2({
-        placeholder:"Select a team",
+        placeholder: "Select a team",
     });
     $('#team_group').select2({
-        placeholder:"Select a Group",
+        placeholder: "Select a Group",
     });
     // proceeby
     $('.modal').on('shown.bs.modal', function (e) {
         $('.processby').select2({
-            placeholder:"Select a HOD",
-            dropdownParent:$('.modal.fade.show')
+            placeholder: "Select a HOD",
+            dropdownParent: $('.modal.fade.show')
         });
 
         $('#project_regionn').select2({
-            placeholder:"Select a HOT",
-            dropdownParent:$('.modal.fade.show')
+            placeholder: "Select a HOT",
+            dropdownParent: $('.modal.fade.show')
         });
 
         //for CBP List Dept dropdown
         $('.cbp_dept').select2({
-            placeholder:"Select a Department",
-            dropdownParent:$('.modal.fade.show')
+            placeholder: "Select a Department",
+            dropdownParent: $('.modal.fade.show')
         });
         $('.modal.fade.show').find("#d_line").datetimepicker();
     });
@@ -822,28 +835,28 @@ $(function () {
     //     percent: 50
     // })
 
-        $(".progress").each(function() {
+    $(".progress").each(function () {
 
-          var value = $(this).attr('data-value');
-          var left = $(this).find('.progress-left .progress-bar');
-          var right = $(this).find('.progress-right .progress-bar');
+        var value = $(this).attr('data-value');
+        var left = $(this).find('.progress-left .progress-bar');
+        var right = $(this).find('.progress-right .progress-bar');
 
-          if (value > 0) {
+        if (value > 0) {
             if (value <= 50) {
-              right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+                right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
             } else {
-              right.css('transform', 'rotate(180deg)')
-              left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
+                right.css('transform', 'rotate(180deg)')
+                left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
             }
-          }
-
-        })
-
-        function percentageToDegrees(percentage) {
-
-          return percentage / 100 * 360
-
         }
+
+    })
+
+    function percentageToDegrees(percentage) {
+
+        return percentage / 100 * 360
+
+    }
 
     // this function is for pagination with tab-panes in profile.blade.php
     // var activeTab  = window.location.hash;
@@ -861,8 +874,116 @@ const app = new Vue({
 //test
 
 // Custom Error Message automatically hide
-window.setTimeout(function() {
-    $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+window.setTimeout(function () {
+    $(".alert").fadeTo(1000, 0).slideUp(1000, function () {
         $(this).remove();
     });
 }, 1000);
+
+
+//for image edit
+var aa;
+
+function ykdz() {
+    var current_image = window.localStorage.getItem('current_image');
+
+    // Image editor
+
+
+    // Image editor
+    aa = new tui.ImageEditor('#tui-image-editor-container_now', {
+
+        includeUI: {
+            loadImage: {
+                path: current_image,
+                name: 'SampleImage'
+            },
+            download: false,
+            theme: blackTheme, // or whiteTheme
+            initMenu: 'filter',
+            uiSize: {
+                height: '580px',
+                width: '50%'
+            },
+            menuBarPosition: 'left',
+            cssMaxWidth: 200,
+            usageStatistics: false,
+        },
+
+
+    }, {
+        methods: {
+            selectImage: function (event) {
+                console.log('fff');
+            },
+            crop: function () {
+                console.log('ffff');
+            },
+
+
+        }
+    });
+
+    window.onresize = function () {
+
+        imageEditor.ui.resizeEditor();
+    }
+    aa.on('mousedown', function (pos) {
+        console.log('ppppp')
+    });
+    // imageEditor.on('applyFilter', function(pos) {
+    //     console.log('ppppp')
+    // });
+
+
+    //saving function to saver
+
+    var image;
+
+
+    $('#photoeditor').modal('show');
+    var ff = aa.getImageName();
+    console.log(ff)
+    console.log('aaa')
+
+
+}
+
+
+//add function to work with photo editor
+
+//add function to work with photo editor
+function savedatatosaver(imgid) {
+
+    var imid = imgid;
+    ;
+//             let tets=aa.getImageName();//test use for instance methods
+
+    console.log(aa.toDataURL());
+    $(document).ready(function () {
+        // $(imgid + ">" +"img ").attr('src',aa.toDataURL());
+        document.getElementById(imid).querySelector("img").setAttribute('src', aa.toDataURL());
+
+        $(" .dz-image > img ").css('width', '100%');
+        $(" .dz-image > img ").css('height', '100%');
+        console.log(imid)
+    });
+    window.localStorage.setItem('current_image', aa.toDataURL());
+//            image = tets.replace('data:image/png;base64,', '');
+//
+//
+//             console.log(aa.toDataURL())///this line is important to save image in server
+//             $.ajax({
+//                 type: 'POST',
+//                 url: 'Default.aspx/MoveImages',
+//                 data: '{ "imageData" : "' + image + '" }',
+//                 contentType: 'application/json; charset=utf-8',
+//                 dataType: 'json',
+//                 success: function (msg) {
+//                 }
+//             });
+
+
+}
+
+//end for image edit

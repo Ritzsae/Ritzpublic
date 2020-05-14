@@ -21,7 +21,7 @@
                     <div class="col-sm-12 no-gutters p-5 test-toast">
                         <div id="tui-image-editor-container_now" class="shadow-lg rounded"></div>
                         <!--                           <button onclick="tt()">ff</button>-->
-                        <button class="btn btn-success" onclick="savedatatosaver()">Save</button>
+                        <button class="btn btn-success" id="foredit" >Save</button>
                     </div>
                     <div class="test"><img src="test"/></div>
 
@@ -36,107 +36,6 @@
 @endsection
 @push('scripts')
     <script>
-var aa;
-        function ykdz(){
-            var current_image=window.localStorage.getItem('current_image');
-
-            // Image editor
-
-
-            // Image editor
-            aa = new tui.ImageEditor('#tui-image-editor-container_now', {
-
-                includeUI: {
-                    loadImage: {
-                        path: current_image,
-                        name: 'SampleImage'
-                    },
-                    download: false,
-                    theme: blackTheme, // or whiteTheme
-                    initMenu: 'filter',
-                    uiSize: {
-                        height: '580px',
-                        width: '50%'
-                    },
-                    menuBarPosition: 'left',
-                    cssMaxWidth: 200,
-                    usageStatistics: false,
-                },
-
-
-            }, {
-                methods: {
-                    selectImage: function (event) {
-                        console.log('fff');
-                    },
-                    crop: function () {
-                        console.log('ffff');
-                    },
-
-
-                }
-            });
-
-            window.onresize = function () {
-
-                imageEditor.ui.resizeEditor();
-            }
-            aa.on('mousedown', function (pos) {
-                console.log('ppppp')
-            });
-            // imageEditor.on('applyFilter', function(pos) {
-            //     console.log('ppppp')
-            // });
-
-
-            //saving function to saver
-
-            var image;
-
-
-
-
-            $('#photoeditor').modal('show');
-            var ff=aa.getImageName();
-            console.log(ff)
-            console.log('aaa')
-
-
-        }
-
-
-        //add function to work with photo editor
-
-        //add function to work with photo editor
-        function savedatatosaver() {
-
-
-//             let tets=aa.getImageName();//test use for instance methods
-
-             console.log(aa.toDataURL());
-            $(document).ready(function(){
-                $(" .dz-image > img ").attr('src',aa.toDataURL());
-                $(" .dz-image > img ").css('width','100%');
-                $(" .dz-image > img ").css('height','100%');
-                console.log('eeee')
-             });
-            window.localStorage.setItem('current_image',aa.toDataURL());
-//            image = tets.replace('data:image/png;base64,', '');
-//
-//
-//             console.log(aa.toDataURL())///this line is important to save image in server
-//             $.ajax({
-//                 type: 'POST',
-//                 url: 'Default.aspx/MoveImages',
-//                 data: '{ "imageData" : "' + image + '" }',
-//                 contentType: 'application/json; charset=utf-8',
-//                 dataType: 'json',
-//                 success: function (msg) {
-//                 }
-//             });
-
-
-        }
 
 
         window.onload = function () {
