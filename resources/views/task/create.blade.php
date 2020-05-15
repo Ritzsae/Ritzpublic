@@ -18,7 +18,7 @@
                 <div class="modal-body">
 
 
-                    <div class="col-sm-12 no-gutters p-5 test-toast">
+                    <div class="col-sm-12 no-gutters p-5 test-toast" id="toappendbutton">
                         <div id="tui-image-editor-container_now" class="shadow-lg rounded"></div>
                         <!--                           <button onclick="tt()">ff</button>-->
                         <button class="btn btn-success" id="foredit" >Save</button>

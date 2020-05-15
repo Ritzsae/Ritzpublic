@@ -188,8 +188,17 @@ Dropzone.options.taskform = {
 
                 document.getElementsByClassName('dz-preview')[for_id].setAttribute("id", "for_edit_id" + for_id);
                 document.getElementsByClassName('dz-preview')[for_id].querySelector(".dz-edit").addEventListener("click", ykdz);
-                document.getElementById('foredit').addEventListener("click", function () {
-                    savedatatosaver("for_edit_id" + for_id);
+                //this code is because of a bug(run afunction more than once while one more photo was edited)
+                document.getElementById('foredit').remove();
+                var btn = document.createElement("BUTTON");
+                btn.id ='foredit';
+                btn.className='btn btn-primary';
+                btn.innerHTML='Save';
+                document.getElementById("toappendbutton").appendChild(btn);     // Append button
+                //
+
+                document.getElementById('foredit').addEventListener("click", function(){
+                    savedatatosaver(for_id)
                 });
 
 
@@ -872,7 +881,9 @@ const app = new Vue({
     el: '#app',
 });
 //test
-
+function myFunction(dd) {
+    alert (dd);
+}
 // Custom Error Message automatically hide
 window.setTimeout(function () {
     $(".alert").fadeTo(1000, 0).slideUp(1000, function () {
@@ -955,20 +966,24 @@ function ykdz() {
 //add function to work with photo editor
 function savedatatosaver(imgid) {
 
-    var imid = imgid;
-    ;
+
+    var now = new Date().getTime();
+    var prevt = window.localStorage.getItem('prevActionTime');
+    if ((now - prevt) > 1000 || !prevt) {
+        window.localStorage.setItem('prevActionTime', now);
+        console.log(imgid)
+        console.log('xxx')
+
 //             let tets=aa.getImageName();//test use for instance methods
 
-    console.log(aa.toDataURL());
-    $(document).ready(function () {
-        // $(imgid + ">" +"img ").attr('src',aa.toDataURL());
-        document.getElementById(imid).querySelector("img").setAttribute('src', aa.toDataURL());
+        $(document).ready(function () {
+            // $(imgid + ">" +"img ").attr('src',aa.toDataURL());
+            document.getElementById('for_edit_id'+imgid).querySelector("img").setAttribute('src', aa.toDataURL());
 
-        $(" .dz-image > img ").css('width', '100%');
-        $(" .dz-image > img ").css('height', '100%');
-        console.log(imid)
-    });
-    window.localStorage.setItem('current_image', aa.toDataURL());
+            $(" .dz-image > img ").css('width', '100%');
+            $(" .dz-image > img ").css('height', '100%');
+        });
+        window.localStorage.setItem('current_image', aa.toDataURL());
 //            image = tets.replace('data:image/png;base64,', '');
 //
 //
@@ -982,6 +997,8 @@ function savedatatosaver(imgid) {
 //                 success: function (msg) {
 //                 }
 //             });
+
+    }
 
 
 }
