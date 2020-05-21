@@ -150,6 +150,7 @@ window.projectEditor = null;
 window.editor_feedback = null;
 window.remark = null;
 
+var ci = {};
 
 //this declaration is for taskdropzone
 
@@ -174,6 +175,7 @@ Dropzone.options.taskform = {
         this.on("error", function (file, response) {
             console.log(response);
         });
+
         this.on("addedfile", function (file, response) {
 
             var for_id = myDropZone.files.length - 1;
@@ -187,35 +189,28 @@ Dropzone.options.taskform = {
             } else {
 
                 document.getElementsByClassName('dz-preview')[for_id].setAttribute("id", "for_edit_id" + for_id);
-                document.getElementsByClassName('dz-preview')[for_id].querySelector(".dz-edit").addEventListener("click", ykdz);
-                //this code is because of a bug(run afunction more than once while one more photo was edited)
-                document.getElementById('foredit').remove();
-                var btn = document.createElement("BUTTON");
-                btn.id ='foredit';
-                btn.className='btn btn-primary';
-                btn.innerHTML='Save';
-                document.getElementById("toappendbutton").appendChild(btn);     // Append button
-                //
-
-                document.getElementById('foredit').addEventListener("click", function(){
-                    savedatatosaver(for_id)
+                document.getElementsByClassName('dz-preview')[for_id].querySelector(".dz-edit").addEventListener("click",  function(){
+                    ykdz(for_id)
                 });
+                //this code is because of a bug(run afunction more than once while one more photo was edited)
 
+
+                var reader = new FileReader();
+
+
+                reader.readAsDataURL(file);
+                reader.onload = function (event) {
+
+                    ci['id'+for_id]=event.target.result;
+                    //   event.target.result - is dataURL data
+                    // console.log("data url: " + event.target.result);
+                    window.localStorage.setItem('current_image',JSON.stringify(ci));
+                    console.log(window.localStorage.getItem('current_image'));
+
+
+                };
 
             }
-            var reader = new FileReader();
-
-
-            reader.readAsDataURL(file);
-
-            reader.onload = function (event) {
-                //   event.target.result - is dataURL data
-                // console.log("data url: " + event.target.result);
-                window.localStorage.setItem('current_image', event.target.result);
-                console.log(window.localStorage.getItem('current_image'));
-
-
-            };
 
             // console.log('New File Added');
         });
@@ -895,18 +890,34 @@ window.setTimeout(function () {
 //for image edit
 var aa;
 
-function ykdz() {
-    var current_image = window.localStorage.getItem('current_image');
+function ykdz(id) {
+    var current_image =JSON.parse(localStorage.getItem("current_image"));
+    document.getElementById('foredit').remove();
+
+
+    //this is to be dynamic save button
+    var btn = document.createElement("BUTTON");
+    btn.id ='foredit';
+    btn.className='btn btn-primary';
+    btn.innerHTML='Save';
+    document.getElementById("toappendbutton").appendChild(btn);     // Append button
+    //
+
+    document.getElementById('foredit').addEventListener("click", function(){
+        savedatatosaver(id)
+    });
+    //end dynamic save button
+
 
     // Image editor
-
+console.log(current_image);
 
     // Image editor
     aa = new tui.ImageEditor('#tui-image-editor-container_now', {
 
         includeUI: {
             loadImage: {
-                path: current_image,
+                path: current_image['id'+id],
                 name: 'SampleImage'
             },
             download: false,
@@ -920,8 +931,6 @@ function ykdz() {
             cssMaxWidth: 200,
             usageStatistics: false,
         },
-
-
     }, {
         methods: {
             selectImage: function (event) {
@@ -930,8 +939,6 @@ function ykdz() {
             crop: function () {
                 console.log('ffff');
             },
-
-
         }
     });
 
@@ -973,7 +980,6 @@ function savedatatosaver(imgid) {
         window.localStorage.setItem('prevActionTime', now);
         console.log(imgid)
         console.log('xxx')
-
 //             let tets=aa.getImageName();//test use for instance methods
 
         $(document).ready(function () {
@@ -982,8 +988,14 @@ function savedatatosaver(imgid) {
 
             $(" .dz-image > img ").css('width', '100%');
             $(" .dz-image > img ").css('height', '100%');
+           var original_images=JSON.parse(localStorage.getItem("current_image"))
+            original_images['id'+imgid]=2;
+            console.log(JSON.stringify(original_images))
+            window.localStorage.setItem('current_image',JSON.stringify(original_images));
         });
-        window.localStorage.setItem('current_image', aa.toDataURL());
+
+
+        // window.localStorage.setItem('current_image', aa.toDataURL());
 //            image = tets.replace('data:image/png;base64,', '');
 //
 //
