@@ -39,12 +39,7 @@
 
 
         window.onload = function () {
-
             $(function () {
-
-
-
-
 
                 //department dropdown in create.blade.php task
                 $.ajax({
