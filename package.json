@@ -28,7 +28,7 @@
     "dependencies": {
         "@ckeditor/ckeditor5-build-classic": "^16.0.0",
         "@toast-ui/vue-image-editor": "^1.2.0",
-        "apexcharts": "^3.16.1",
+        "apexcharts": "^3.24.0",
         "bootstrap-sweetalert": "^1.0.1",
         "console.pretty": "^0.1.0",
         "datatables.net-dt": "^1.10.20",
