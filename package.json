@@ -35,7 +35,7 @@
         "dropzone": "^5.5.1",
         "filereader": "^0.10.3",
         "html2canvas": "^1.0.0-rc.5",
-        "moment": "^2.24.0",
+        "moment": "^2.29.4",
         "orgchart": "^2.1.10",
         "select2": "^4.0.12",
         "sweetalert2": "^9.10.0",
